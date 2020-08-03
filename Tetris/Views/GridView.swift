@@ -19,28 +19,31 @@ struct GridView: View {
     }
 
     var body: some View {
-        VStack {
+        HStack {
             GeometryReader(content: { geometry in
-                // 调整间距
+                // 大网格
                 VStack(spacing: 0) {
                     ForEach(self.gridViewModel.getAllLine()) { xArray in
-                        self.body(line: xArray, for: geometry.size)
+                        self.body(line: xArray, geometry.size)
                     }
                 }
+
+                // 预览的网格
+                PreGridView(4)
             })
         }
     }
 
-    private func body(line lineModel: LineModel, for size: CGSize) -> some View {
+    private func body(line lineModel: LineModel, _ size: CGSize) -> some View {
         HStack(spacing: 0) {
             ForEach(lineModel.lineArray) { item in
-                self.body(cube: item, for: size)
+                self.body(item, size)
             }
         }
     }
 
-    private func body(cube cubeModel: CubeModel, for size: CGSize) -> some View {
-        CubeView(for: size)
+    private func body(_ cubeModel: CubeModel, _ size: CGSize) -> some View {
+        CubeView(cubeModel, size)
     }
 
 }

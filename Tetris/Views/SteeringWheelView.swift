@@ -8,6 +8,17 @@ import SwiftUI
 struct SteeringWheelView: View {
 
     var body: some View {
-        Text("Hello, World!1")
+        VStack {
+            HStack {
+                Button(action: {}, label: { Text("⬆️") })
+            }
+            HStack {
+                Button(action: {}, label: { Text("⬅️️") })
+                Button(action: {}, label: { Text("➡️️") })
+            }
+            HStack {
+                Button(action: {}, label: { Text("️⬇️") })
+            }
+        }
     }
 }

@@ -11,6 +11,8 @@
 		57FAD0B7C9333010288267AD /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD50A8FA8744E684FA3F0 /* GridView.swift */; };
 		57FAD1E3805F3126AC565898 /* CubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD7F64ECD73564DF5C294 /* CubeModel.swift */; };
 		57FAD3A4EAEC8CF698AC545C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57FAD3D565387538649D4A77 /* Preview Assets.xcassets */; };
+		57FAD418BD295029137FC146 /* PreGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FADE1BBAB899DC99E797A6 /* PreGridView.swift */; };
+		57FAD5363A83C91A18A1C21A /* PreGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD207499AFA862E1964ED /* PreGridModel.swift */; };
 		57FAD596B8CD2069F01C0D47 /* TetrisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FADF96C8B5B3C1E15C8CFA /* TetrisUITests.swift */; };
 		57FAD725485CA45838FE2382 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD0D262817F2C5136D04F /* GridViewModel.swift */; };
 		57FAD79EA16890DD05CD22BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FADF44EEDAC2A73994422A /* SceneDelegate.swift */; };
@@ -18,10 +20,13 @@
 		57FAD8D28720C62D649E374D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FADE1D46375EA7FD41BFCE /* AppDelegate.swift */; };
 		57FAD9A96EAF73DB0060BEBF /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD0544D1CFC6C85635F81 /* GridModel.swift */; };
 		57FAD9B51BDE1AD098DFEB18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57FADAA22461ADBAAD07F78A /* Assets.xcassets */; };
+		57FADAA8955D2445EAE65996 /* PreLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD45974E69A27581DB579 /* PreLineModel.swift */; };
+		57FADAF2D15AF4B444FFFF8F /* PreGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD970676BDCC67DB27FCE /* PreGridViewModel.swift */; };
 		57FADAFE6D06F62476C490B4 /* TetrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD389CA96E9F2F217D4EC /* TetrisTests.swift */; };
 		57FADBE67FA789C0288A7677 /* Tetris.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD21060490020E40FA819 /* Tetris.xcdatamodeld */; };
 		57FADBF99527971F34210453 /* CubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD99D920D42536B658EDE /* CubeView.swift */; };
 		57FADD60588791C677EF44DF /* LineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD22A5B1B81FB062C0DC8 /* LineModel.swift */; };
+		57FADE339E2384B3AB6B97CC /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD5A9E971E2023E5C9BB4 /* GraphModel.swift */; };
 		57FADE36CF74A9B184A46B3A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FADC4F6183F6C9E6CE0A68 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,22 +50,27 @@
 /* Begin PBXFileReference section */
 		57FAD0544D1CFC6C85635F81 /* GridModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
 		57FAD0D262817F2C5136D04F /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
+		57FAD207499AFA862E1964ED /* PreGridModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGridModel.swift; sourceTree = "<group>"; };
 		57FAD20A968883340DD52408 /* Tetris.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tetris.xcdatamodel; sourceTree = "<group>"; };
 		57FAD22A5B1B81FB062C0DC8 /* LineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineModel.swift; sourceTree = "<group>"; };
 		57FAD34456639623D4048233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57FAD389CA96E9F2F217D4EC /* TetrisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisTests.swift; sourceTree = "<group>"; };
 		57FAD393CE3C2AA730671736 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		57FAD3D565387538649D4A77 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		57FAD45974E69A27581DB579 /* PreLineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreLineModel.swift; sourceTree = "<group>"; };
 		57FAD50A8FA8744E684FA3F0 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		57FAD50EAC385C410143CF09 /* SteeringWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringWheelView.swift; sourceTree = "<group>"; };
+		57FAD5A9E971E2023E5C9BB4 /* GraphModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		57FAD6366CE270CC55BC3B85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		57FAD649C83D3C06637C3D77 /* TetrisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TetrisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FAD7F64ECD73564DF5C294 /* CubeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeModel.swift; sourceTree = "<group>"; };
 		57FAD89CF5B321A42656ED3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		57FAD970676BDCC67DB27FCE /* PreGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGridViewModel.swift; sourceTree = "<group>"; };
 		57FAD99D920D42536B658EDE /* CubeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeView.swift; sourceTree = "<group>"; };
 		57FADAA22461ADBAAD07F78A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57FADB0C7A07DAB693C11089 /* Tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FADC4F6183F6C9E6CE0A68 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		57FADE1BBAB899DC99E797A6 /* PreGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGridView.swift; sourceTree = "<group>"; };
 		57FADE1D46375EA7FD41BFCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57FADF44EEDAC2A73994422A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		57FADF96C8B5B3C1E15C8CFA /* TetrisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisUITests.swift; sourceTree = "<group>"; };
@@ -99,6 +109,7 @@
 				57FAD99D920D42536B658EDE /* CubeView.swift */,
 				57FAD50A8FA8744E684FA3F0 /* GridView.swift */,
 				57FAD50EAC385C410143CF09 /* SteeringWheelView.swift */,
+				57FADE1BBAB899DC99E797A6 /* PreGridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +120,9 @@
 				57FAD0544D1CFC6C85635F81 /* GridModel.swift */,
 				57FAD7F64ECD73564DF5C294 /* CubeModel.swift */,
 				57FAD22A5B1B81FB062C0DC8 /* LineModel.swift */,
+				57FAD207499AFA862E1964ED /* PreGridModel.swift */,
+				57FAD45974E69A27581DB579 /* PreLineModel.swift */,
+				57FAD5A9E971E2023E5C9BB4 /* GraphModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				57FAD0D262817F2C5136D04F /* GridViewModel.swift */,
+				57FAD970676BDCC67DB27FCE /* PreGridViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -328,6 +343,11 @@
 				57FAD1E3805F3126AC565898 /* CubeModel.swift in Sources */,
 				57FAD725485CA45838FE2382 /* GridViewModel.swift in Sources */,
 				57FADD60588791C677EF44DF /* LineModel.swift in Sources */,
+				57FAD418BD295029137FC146 /* PreGridView.swift in Sources */,
+				57FADAF2D15AF4B444FFFF8F /* PreGridViewModel.swift in Sources */,
+				57FAD5363A83C91A18A1C21A /* PreGridModel.swift in Sources */,
+				57FADAA8955D2445EAE65996 /* PreLineModel.swift in Sources */,
+				57FADE339E2384B3AB6B97CC /* GraphModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

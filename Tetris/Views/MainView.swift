@@ -10,13 +10,16 @@ struct MainView: View {
         HStack {
             // 方向按钮视图
             SteeringWheelView()
+
             // 主网格视图
             GridView(widthNum: 10, heightNum: 20).padding()
-            // 变形按钮视图
+
+            //变形按钮视图
             Text("Hello, World!3")
         }
     }
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

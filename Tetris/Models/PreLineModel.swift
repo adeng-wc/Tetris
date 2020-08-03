@@ -6,7 +6,7 @@
 import Foundation
 import SwiftUI
 
-struct LineModel: Identifiable {
+struct PreLineModel: Identifiable {
 
     var id: String
     var lineArray: [CubeModel] = []

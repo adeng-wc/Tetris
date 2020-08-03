@@ -8,8 +8,8 @@ struct GridModel {
 
     var lineArray: [LineModel] = []
 
-    init(widthNum widthNum: Int, heightNum: Int) {
-        for y in 1...heightNum {
+    init(widthNum: Int, heightNum: Int) {
+        for y in 0..<heightNum {
             lineArray.append(LineModel(y, widthNum: widthNum))
         }
         print(" grid init finish")

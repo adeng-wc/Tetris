@@ -9,12 +9,14 @@ struct CubeView: View {
 
     // 正方形的长宽一直
     var width: CGFloat
-    // 视图颜色
-    var color: Color?
 
-    init(for size: CGSize) {
+    // 方块 model 对象
+    var cube: CubeModel
+
+    init(_ cube: CubeModel, _ size: CGSize) {
         // 根据屏幕长度，计算出方块的宽度
-        width = size.height / 19
+        width = size.height / 20
+        self.cube = cube
     }
 
     var body: some View {
@@ -31,8 +33,7 @@ struct CubeView: View {
 
     private func body(for size: CGSize) -> some View {
         // 用矩形做正方形处理
-        Rectangle().fill(Color.white)
-
+        Rectangle().fill(cube.color)
     }
 }
 

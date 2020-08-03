@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct CubeModel: Identifiable {
 
@@ -11,10 +12,16 @@ struct CubeModel: Identifiable {
 
     var x: Int
     var y: Int
+    var color: Color
 
-    init(x: Int, y: Int) {
+    init(_ x: Int, _ y: Int, _ color: Color) {
         self.x = x
         self.y = y
-        self.id = String.init(y) + "-" + String.init(x)
+        self.color = color
+        self.id = "Pre" + String.init(y) + "-" + String.init(x)
+    }
+
+    mutating func setColor(_ color: Color) {
+        self.color = color
     }
 }
