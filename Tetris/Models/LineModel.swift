@@ -8,13 +8,10 @@ import Foundation
 struct LineModel: Identifiable {
 
     var id: String
-    // 一行10个方块
-    let widthNum = 10;
-
     var lineArray: [CubeModel] = []
     var y: Int
 
-    init(_ y: Int) {
+    init(_ y: Int, widthNum widthNum: Int) {
         self.id = String.init(y) + "line"
         self.y = y
         for x in 1...widthNum {

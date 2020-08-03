@@ -7,14 +7,22 @@ import SwiftUI
 
 struct GridView: View {
 
-    @ObservedObject var gridViewModel: GridViewModel = GridViewModel()
+    var widthNum: Int
+    var heightNum: Int
+
+    @ObservedObject var gridViewModel: GridViewModel
+
+    init(widthNum: Int, heightNum: Int) {
+        self.widthNum = widthNum
+        self.heightNum = heightNum
+        gridViewModel = GridViewModel(widthNum: self.widthNum, heightNum: self.heightNum)
+    }
 
     var body: some View {
         VStack {
-//            Text("")
             GeometryReader(content: { geometry in
                 // 调整间距
-                VStack(spacing:0) {
+                VStack(spacing: 0) {
                     ForEach(self.gridViewModel.getAllLine()) { xArray in
                         self.body(line: xArray, for: geometry.size)
                     }

@@ -7,9 +7,18 @@ import SwiftUI
 
 class GridViewModel: ObservableObject {
 
-    @Published private var gridModel: GridModel = GridModel()
+    var widthNum: Int
+    var heightNum: Int
+    @Published private var gridModel: GridModel
+
+    init(widthNum: Int, heightNum: Int) {
+        self.widthNum = widthNum
+        self.heightNum = heightNum
+        gridModel = GridModel(widthNum: self.widthNum, heightNum: self.heightNum)
+    }
 
     func getAllLine() -> [LineModel] {
         gridModel.lineArray
     }
 }
+

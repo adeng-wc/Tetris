@@ -11,8 +11,7 @@ struct MainView: View {
             // 方向按钮视图
             SteeringWheelView()
             // 主网格视图
-            GridView()
-                    .padding()
+            GridView(widthNum: 10, heightNum: 20).padding()
             // 变形按钮视图
             Text("Hello, World!3")
         }

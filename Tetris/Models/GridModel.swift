@@ -5,13 +5,12 @@
 
 
 struct GridModel {
-    // 一个表格，20行
-    let lineNum = 20;
+
     var lineArray: [LineModel] = []
 
-    init() {
-        for y in 1...lineNum {
-            lineArray.append(LineModel(y))
+    init(widthNum widthNum: Int, heightNum: Int) {
+        for y in 1...heightNum {
+            lineArray.append(LineModel(y, widthNum: widthNum))
         }
         print(" grid init finish")
     }

@@ -8,7 +8,9 @@ import SwiftUI
 struct CubeView: View {
 
     // 正方形的长宽一直
-    var width: CGFloat;
+    var width: CGFloat
+    // 视图颜色
+    var color: Color?
 
     init(for size: CGSize) {
         // 根据屏幕长度，计算出方块的宽度
