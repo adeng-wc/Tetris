@@ -10,23 +10,29 @@ struct GridView: View {
     @ObservedObject var gridViewModel: GridViewModel = GridViewModel()
 
     var body: some View {
-        VStack{
-            ForEach(gridViewModel.getAllLine()) { xArray in
-                self.body(line: xArray)
-            }
+        VStack {
+//            Text("")
+            GeometryReader(content: { geometry in
+                // 调整间距
+                VStack(spacing:0) {
+                    ForEach(self.gridViewModel.getAllLine()) { xArray in
+                        self.body(line: xArray, for: geometry.size)
+                    }
+                }
+            })
         }
     }
 
-    private func body(line lineModel: LineModel) -> some View {
-        HStack {
+    private func body(line lineModel: LineModel, for size: CGSize) -> some View {
+        HStack(spacing: 0) {
             ForEach(lineModel.lineArray) { item in
-                self.body(cube: item)
+                self.body(cube: item, for: size)
             }
         }
     }
 
-    private func body(cube cubeModel: CubeModel) -> some View {
-        CubeView()
+    private func body(cube cubeModel: CubeModel, for size: CGSize) -> some View {
+        CubeView(for: size)
     }
 
 }
