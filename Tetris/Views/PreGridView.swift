@@ -36,8 +36,9 @@ struct PreGridView: View {
                 self.preGridViewModel.randomGraph()
             }, label: { Text("随机生成方块") })
 
+            // 测试变形
             Button(action: {
-                self.preGridViewModel.deform()
+                self.preGridViewModel.change()
             }, label: { Text("方块变形") })
         }
     }
