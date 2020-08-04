@@ -8,15 +8,17 @@ import SwiftUI
 struct GridView: View {
 
     @ObservedObject var gridViewModel: GridViewModel
+    @ObservedObject var preGridViewModel: PreGridViewModel
 
-    init(_ gridViewModel: GridViewModel) {
+    init(_ gridViewModel: GridViewModel, _ preGridViewModel: PreGridViewModel) {
         self.gridViewModel = gridViewModel
+        self.preGridViewModel = preGridViewModel
     }
 
     var body: some View {
         HStack {
             GeometryReader(content: { geometry in
-                // 大网格
+                // 主网格
                 VStack(spacing: 0) {
                     ForEach(self.gridViewModel.getAllLine()) { xArray in
                         self.body(line: xArray, geometry.size)
@@ -24,7 +26,7 @@ struct GridView: View {
                 }
 
                 // 预览的网格
-                PreGridView(4, self.gridViewModel)
+                PreGridView(self.preGridViewModel)
             })
         }
     }

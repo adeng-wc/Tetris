@@ -11,8 +11,8 @@ struct PreGridView: View {
 
     @ObservedObject var preGridViewModel: PreGridViewModel
 
-    init(_ num: Int, _ gridViewModel: GridViewModel) {
-        self.preGridViewModel = PreGridViewModel(num, num, gridViewModel)
+    init(_ preGridViewModel: PreGridViewModel) {
+        self.preGridViewModel = preGridViewModel
     }
 
     var body: some View {

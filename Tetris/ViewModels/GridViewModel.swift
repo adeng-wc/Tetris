@@ -9,11 +9,18 @@ class GridViewModel: ObservableObject {
 
     @Published private var gridModel: GridModel
 
+    var preGridViewModel: PreGridViewModel?
+
     // 主网格中，可以移动的对象
     private var graphModel: GraphModel?
 
-    init(_ widthNum: Int, _ heightNum: Int) {
+    init(widthNum: Int, heightNum: Int) {
         gridModel = GridModel(widthNum, heightNum)
+
+    }
+
+    func setPreGridViewModel(_ preGridViewModel: PreGridViewModel) {
+        self.preGridViewModel = preGridViewModel
     }
 
     func getAllLine() -> [LineModel] {
@@ -52,19 +59,44 @@ class GridViewModel: ObservableObject {
     }
 
     func change() {
-
+        print("向上按钮")
     }
 
     func leftMove() {
-
+        print("向左按钮")
     }
 
     func rightMove() {
-
+        print("向右按钮")
     }
 
     func downMove() {
+        print("向下按钮")
 
+        // 先判断，能否下移
+        for index in self.graphModel!.array {
+            if (index.y + 1) == gridModel.lineArray.count {
+                print("y + 1 == 最大y值：\(gridModel.lineArray.count)")
+
+                // 到底后，添加一个新的图形到网格中
+                preGridViewModel?.addToGrid()
+                return
+            }
+        }
+
+        // 将自己的位置变白色
+        let color = self.graphModel!.array[0].color
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].color = Color.white
+        }
+        fillColor()
+
+        // 下移一格，重新渲染
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].y = self.graphModel!.array[index].y + 1
+            self.graphModel!.array[index].color = color
+        }
+        fillColor()
     }
 }
 

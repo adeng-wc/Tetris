@@ -19,15 +19,15 @@ struct CubeModel: Identifiable {
         self.color = color
     }
 
-    mutating func setColor(_ color: Color) {
-        self.color = color
-    }
+//    mutating func setColor(_ color: Color) {
+//        self.color = color
+//    }
 
-    mutating func setX(_ x: Int) {
-        self.x = x
-    }
-
-    mutating func setY(_ y: Int) {
-        self.y = y
-    }
+//    mutating func setX(_ x: Int) {
+//        self.x = x
+//    }
+//
+//    mutating func setY(_ y: Int) {
+//        self.y = y
+//    }
 }

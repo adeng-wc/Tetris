@@ -21,7 +21,7 @@ struct PreGridModel {
             if (lineIndex == y) {
                 for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
                     if (cubeIndex == x) {
-                        lineArray[lineIndex].lineArray[cubeIndex].setColor(color)
+                        lineArray[lineIndex].lineArray[cubeIndex].color = color
                     }
                 }
             }
@@ -31,7 +31,7 @@ struct PreGridModel {
     mutating func clearColor() {
         for lineIndex in 0..<lineArray.count {
             for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
-                lineArray[lineIndex].lineArray[cubeIndex].setColor(Color.white)
+                lineArray[lineIndex].lineArray[cubeIndex].color = Color.white
             }
         }
     }

@@ -21,7 +21,7 @@ struct GridModel {
             if (lineIndex == y) {
                 for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
                     if (cubeIndex == x) {
-                        lineArray[lineIndex].lineArray[cubeIndex].setColor(color)
+                        lineArray[lineIndex].lineArray[cubeIndex].color = color
                     }
                 }
             }

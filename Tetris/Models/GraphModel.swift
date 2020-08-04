@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI
 
 protocol GraphModel {
-    var array: [CubeModel] { get }
+    var array: [CubeModel] { get set }
     var type: Int { get }
     var status: Int { get }
     mutating func change()

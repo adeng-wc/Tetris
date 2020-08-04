@@ -8,9 +8,13 @@ import SwiftUI
 struct MainView: View {
 
     @ObservedObject var gridViewModel: GridViewModel
+    @ObservedObject var preGridViewModel: PreGridViewModel
 
     init() {
-        gridViewModel = GridViewModel(10, 20)
+        var gridViewModel = GridViewModel(widthNum: 10, heightNum: 20)
+        self.gridViewModel = gridViewModel
+        self.preGridViewModel = PreGridViewModel(widthNum: 4, heightNum: 4, gridViewModel: gridViewModel)
+        self.gridViewModel.setPreGridViewModel(self.preGridViewModel)
     }
 
     var body: some View {
@@ -19,7 +23,7 @@ struct MainView: View {
             SteeringWheelView(self.gridViewModel)
 
             // 主网格视图
-            GridView(self.gridViewModel).padding()
+            GridView(self.gridViewModel, self.preGridViewModel).padding()
 
             //变形按钮视图
             Text("Hello, World!3")

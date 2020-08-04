@@ -13,7 +13,7 @@ class PreGridViewModel: ObservableObject {
     @Published private var preGridModel: PreGridModel
     private var graphModel: GraphModel
 
-    init(_ widthNum: Int, _ heightNum: Int, _ gridViewModel: GridViewModel) {
+    init(widthNum: Int, heightNum: Int, gridViewModel: GridViewModel) {
         self.widthNum = widthNum
         self.heightNum = heightNum
         self.preGridModel = PreGridModel(widthNum: self.widthNum, heightNum: self.heightNum)
