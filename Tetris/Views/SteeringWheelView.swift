@@ -16,14 +16,22 @@ struct SteeringWheelView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {}, label: { Text("⬆️") })
+                Button(action: {
+                    self.gridViewModel.change()
+                }, label: { Text("⬆️") })
             }
             HStack {
-                Button(action: {}, label: { Text("⬅️️") })
-                Button(action: {}, label: { Text("➡️️") })
+                Button(action: {
+                    self.gridViewModel.leftMove()
+                }, label: { Text("⬅️️") })
+                Button(action: {
+                    self.gridViewModel.rightMove()
+                }, label: { Text("➡️️") })
             }
             HStack {
-                Button(action: {}, label: { Text("️⬇️") })
+                Button(action: {
+                    self.gridViewModel.downMove()
+                }, label: { Text("️⬇️") })
             }
         }
     }

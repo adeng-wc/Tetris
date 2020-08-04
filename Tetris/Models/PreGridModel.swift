@@ -13,7 +13,7 @@ struct PreGridModel {
         for y in 0..<heightNum {
             lineArray.append(PreLineModel(y, widthNum: widthNum))
         }
-        print(" grid init finish")
+        print("PreGridModel.init() finish")
     }
 
     mutating func setColor(_ x: Int, _ y: Int, _ color: Color) {

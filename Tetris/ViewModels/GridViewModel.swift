@@ -41,7 +41,6 @@ class GridViewModel: ObservableObject {
         default:
             print("默认 case")
         }
-
         fillColor()
     }
 
@@ -50,6 +49,22 @@ class GridViewModel: ObservableObject {
         for index in self.graphModel!.array {
             gridModel.setColor(index.x, index.y, index.color)
         }
+    }
+
+    func change() {
+
+    }
+
+    func leftMove() {
+
+    }
+
+    func rightMove() {
+
+    }
+
+    func downMove() {
+
     }
 }
 

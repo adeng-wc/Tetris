@@ -13,7 +13,7 @@ struct GridModel {
         for y in 0..<heightNum {
             lineArray.append(LineModel(y, widthNum: widthNum))
         }
-        print(" grid init finish")
+        print("GridModel.init() 初始化完成")
     }
 
     mutating func setColor(_ x: Int, _ y: Int, _ color: Color) {
@@ -26,5 +26,18 @@ struct GridModel {
                 }
             }
         }
+    }
+
+    func isWhite(_ x: Int, _ y: Int) -> Bool {
+        for lineIndex in 0..<lineArray.count {
+            if (lineIndex == y) {
+                for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
+                    if (cubeIndex == x) {
+                        return lineArray[lineIndex].lineArray[cubeIndex].color == Color.white
+                    }
+                }
+            }
+        }
+        return false
     }
 }
