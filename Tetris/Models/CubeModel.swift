@@ -9,7 +9,6 @@ import SwiftUI
 struct CubeModel: Identifiable {
 
     var id: String
-
     var x: Int
     var y: Int
     var color: Color
@@ -18,7 +17,7 @@ struct CubeModel: Identifiable {
         self.x = x
         self.y = y
         self.color = color
-        self.id = "Pre" + String.init(y) + "-" + String.init(x)
+        self.id = String.init(y) + "-" + String.init(x)
     }
 
     mutating func setColor(_ color: Color) {

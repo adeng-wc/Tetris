@@ -9,15 +9,10 @@ import SwiftUI
 // 预览方块网格
 struct PreGridView: View {
 
-    var widthNum: Int
-    var heightNum: Int
-
     @ObservedObject var preGridViewModel: PreGridViewModel
 
-    init(_ num: Int) {
-        self.widthNum = num
-        self.heightNum = num
-        preGridViewModel = PreGridViewModel(widthNum: self.widthNum, heightNum: self.heightNum)
+    init(_ num: Int, _ gridViewModel: GridViewModel) {
+        self.preGridViewModel = PreGridViewModel(num, num, gridViewModel)
     }
 
     var body: some View {
@@ -40,6 +35,11 @@ struct PreGridView: View {
             Button(action: {
                 self.preGridViewModel.change()
             }, label: { Text("方块变形") })
+
+            // 预览形状添加到主网格
+            Button(action: {
+                self.preGridViewModel.addToGrid()
+            }, label: { Text("添加到主网格中") })
         }
     }
 

@@ -7,15 +7,10 @@ import SwiftUI
 
 struct GridView: View {
 
-    var widthNum: Int
-    var heightNum: Int
-
     @ObservedObject var gridViewModel: GridViewModel
 
-    init(widthNum: Int, heightNum: Int) {
-        self.widthNum = widthNum
-        self.heightNum = heightNum
-        gridViewModel = GridViewModel(widthNum: self.widthNum, heightNum: self.heightNum)
+    init(_ gridViewModel: GridViewModel) {
+        self.gridViewModel = gridViewModel
     }
 
     var body: some View {
@@ -29,7 +24,7 @@ struct GridView: View {
                 }
 
                 // 预览的网格
-                PreGridView(4)
+                PreGridView(4, self.gridViewModel)
             })
         }
     }

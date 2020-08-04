@@ -6,13 +6,20 @@
 import SwiftUI
 
 struct MainView: View {
+
+    @ObservedObject var gridViewModel: GridViewModel
+
+    init() {
+        gridViewModel = GridViewModel(10, 20)
+    }
+
     var body: some View {
         HStack {
             // 方向按钮视图
-            SteeringWheelView()
+            SteeringWheelView(self.gridViewModel)
 
             // 主网格视图
-            GridView(widthNum: 10, heightNum: 20).padding()
+            GridView(self.gridViewModel).padding()
 
             //变形按钮视图
             Text("Hello, World!3")

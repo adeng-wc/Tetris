@@ -7,6 +7,12 @@ import SwiftUI
 
 struct SteeringWheelView: View {
 
+    @ObservedObject var gridViewModel: GridViewModel
+
+    init(_ gridViewModel: GridViewModel) {
+        self.gridViewModel = gridViewModel
+    }
+
     var body: some View {
         VStack {
             HStack {
