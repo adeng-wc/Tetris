@@ -23,7 +23,10 @@ struct MainView: View {
             SteeringWheelView(self.gridViewModel)
 
             // 主网格视图
-            GridView(self.gridViewModel, self.preGridViewModel).padding()
+            GridView(self.gridViewModel).padding()
+
+            // 预览的网格
+            PreGridView(self.preGridViewModel).padding()
 
             //变形按钮视图
             Text("Hello, World!3")

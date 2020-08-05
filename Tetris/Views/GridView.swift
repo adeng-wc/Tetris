@@ -8,11 +8,9 @@ import SwiftUI
 struct GridView: View {
 
     @ObservedObject var gridViewModel: GridViewModel
-    @ObservedObject var preGridViewModel: PreGridViewModel
 
-    init(_ gridViewModel: GridViewModel, _ preGridViewModel: PreGridViewModel) {
+    init(_ gridViewModel: GridViewModel) {
         self.gridViewModel = gridViewModel
-        self.preGridViewModel = preGridViewModel
     }
 
     var body: some View {
@@ -24,9 +22,6 @@ struct GridView: View {
                         self.body(line: xArray, geometry.size)
                     }
                 }
-
-                // 预览的网格
-                PreGridView(self.preGridViewModel)
             })
         }
     }

@@ -29,6 +29,14 @@ class GridViewModel: ObservableObject {
 
     // 将 预览的 图形，添加到主网格中
     func addToGrid(_  graphModel: GraphModel) {
+
+        if self.graphModel != nil {
+            for index in 0..<self.graphModel!.array.count {
+                self.graphModel!.array[index].color = Color.white
+            }
+            fillColor()
+        }
+
         // 需要重新构建
         switch graphModel.getType() {
         case 1:
@@ -95,7 +103,7 @@ class GridViewModel: ObservableObject {
                 self.graphModel!.changeCounterclockwise()
                 print("节点数组： \(self.graphModel!.array)")
                 for index in 0..<self.graphModel!.array.count {
-                    self.graphModel!.array[index].color = Color.white
+                    self.graphModel!.array[index].color = color
                 }
                 fillColor()
                 return
@@ -226,6 +234,7 @@ class GridViewModel: ObservableObject {
         for index in self.graphModel!.array {
             gridModel.setCanMover(x: index.x, y: index.y, canMove: 0)
         }
+        self.graphModel = nil
     }
 }
 
