@@ -112,21 +112,11 @@ class GridViewModel: ObservableObject {
         for index in self.graphModel!.array {
             if index.x >= gridModel.lineArray[0].lineArray.count ||
                        index.y >= gridModel.lineArray.count ||
-                       index.x < 0 {
-                print("x, y 超边界")
-                print("节点数组： \(self.graphModel!.array)")
-                // 回退，重新赋值颜色
-                self.graphModel!.changeCounterclockwise()
-                print("节点数组： \(self.graphModel!.array)")
-                setGraphModelProperty(color: colorOfGraph, addX: 0, addY: 0)
-                return
-            }
-
-            // 下移所有节点，判断 canMove 是 0，
-            if gridModel.isCanNotMove(index.x, index.y) {
+                       index.x < 0 ||
+                       gridModel.isCanNotMove(index.x, index.y) {
                 print("变形后方块会被占用")
-                // 回退，重新赋值颜色
                 print("节点数组： \(self.graphModel!.array)")
+                // 回退，重新赋值颜色
                 self.graphModel!.changeCounterclockwise()
                 print("节点数组： \(self.graphModel!.array)")
                 setGraphModelProperty(color: colorOfGraph, addX: 0, addY: 0)
@@ -143,14 +133,9 @@ class GridViewModel: ObservableObject {
         // 先判断，能否下移
         for index in self.graphModel!.array {
             // 达到最底层
-            if (index.x - 1) < 0 {
-                print("index.x - 1 < 0")
-                return
-            }
-
-            // 下移所有节点，判断 canMove 是 0，
-            if gridModel.isCanNotMove(index.x - 1, index.y) {
-                print(" 左边 节点状态是 不能移动状态 ")
+            if (index.x - 1) < 0 ||
+                       gridModel.isCanNotMove(index.x - 1, index.y) {
+                print(" 左边 到达极限，不能移动 ")
                 return
             }
         }
@@ -164,14 +149,9 @@ class GridViewModel: ObservableObject {
         // 先判断，能否下移
         for index in self.graphModel!.array {
             // 达到最底层
-            if (index.x + 1) >= gridModel.lineArray[0].lineArray.count {
-                print("index.x + 1 >= \(gridModel.lineArray[0].lineArray.count)")
-                return
-            }
-
-            // 下移所有节点，判断 canMove 是 0，
-            if gridModel.isCanNotMove(index.x + 1, index.y) {
-                print(" 左边 节点状态是 不能移动状态 ")
+            if (index.x + 1) >= gridModel.lineArray[0].lineArray.count ||
+                       gridModel.isCanNotMove(index.x + 1, index.y) {
+                print(" 右边 到达极限，不能移动 ")
                 return
             }
         }
@@ -188,29 +168,26 @@ class GridViewModel: ObservableObject {
         // 先判断，能否下移
         for index in self.graphModel!.array {
             // 达到最底层
-            if (index.y + 1) == gridModel.lineArray.count {
-                print("y + 1 == 最大y值：\(gridModel.lineArray.count)")
-
-                // 设置不能移动
-                setCanNotMove()
-                // 到底后，添加一个新的图形到网格中
-                preGridViewModel?.addToGrid()
-                return
-            }
-
-            // 下移所有节点，判断 canMove 是 0，
-            if gridModel.isCanNotMove(index.x, index.y + 1) {
-                print(" 下方节点状态是 不能移动状态 ")
-                // 设置不能移动
-                setCanNotMove()
-                // 到底后，添加一个新的图形到网格中
-                preGridViewModel?.addToGrid()
+            if (index.y + 1) == gridModel.lineArray.count ||
+                       gridModel.isCanNotMove(index.x, index.y + 1) {
+                print(" 已经到达底部，不能在移动了 ")
+                reachTheBottom()
                 return
             }
         }
 
         // 下移一格子
         moveGraphInMainGrid(addX: 0, addY: 1)
+    }
+
+    /**
+        到达底部，不能再下移
+    */
+    private func reachTheBottom() {
+        // 设置不能移动
+        setCanNotMove()
+        // 到底后，添加一个新的图形到网格中
+        preGridViewModel?.addToGrid()
     }
 
     /**
