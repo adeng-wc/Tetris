@@ -16,6 +16,7 @@ class GridViewModel: ObservableObject {
 
     // 定时器
     var timer: Timer?
+    var speed = 1.0
 
     init(widthNum: Int, heightNum: Int) {
         gridModel = GridModel(widthNum, heightNum)
@@ -62,6 +63,30 @@ class GridViewModel: ObservableObject {
         fillGraphColor()
     }
 
+    func speedDown() {
+        timer?.invalidate()
+        self.speed = self.speed * 2
+        timer = Timer.init(timeInterval: self.speed, repeats: true) { (kTimer) in
+            print("定时器启动了 speed:\(self.speed)")
+            self.downMove()
+        }
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+        // 启动定时器
+        timer!.fire()
+    }
+
+    func speedUp() {
+        timer?.invalidate()
+        self.speed = self.speed / 2
+        timer = Timer.init(timeInterval: self.speed, repeats: true) { (kTimer) in
+            print("定时器启动了 speed:\(self.speed)")
+            self.downMove()
+        }
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+        // 启动定时器
+        timer!.fire()
+    }
+
     private func isGameOver() -> Bool {
         for index in self.graphModel!.array {
             if gridModel.isCanNotMove(index.x, index.y) {
@@ -78,7 +103,7 @@ class GridViewModel: ObservableObject {
         gridModel.restart()
         preGridViewModel?.addToGrid()
 
-        timer = Timer.init(timeInterval: 1, repeats: true) { (kTimer) in
+        timer = Timer.init(timeInterval: self.speed, repeats: true) { (kTimer) in
             print("定时器启动了")
             self.downMove()
         }

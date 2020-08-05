@@ -33,6 +33,12 @@ struct MainView: View {
                 Button(action: {
                     self.gridViewModel.restart()
                 }, label: { Text("重新开始") })
+                Button(action: {
+                    self.gridViewModel.speedUp()
+                }, label: { Text("加速") })
+                Button(action: {
+                    self.gridViewModel.speedDown()
+                }, label: { Text("减速") })
             }
         }
     }
