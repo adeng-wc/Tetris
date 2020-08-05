@@ -121,10 +121,10 @@ class GridViewModel: ObservableObject {
             for index in 0..<self.graphModel!.array.count {
                 self.graphModel!.array[index].color = color
                 if Int.zero != addX {
-                    self.graphModel!.array[index].x = self.graphModel!.array[index].x + addX
+                    self.graphModel!.array[index].x += addX
                 }
                 if Int.zero != addY {
-                    self.graphModel!.array[index].y = self.graphModel!.array[index].y + addY
+                    self.graphModel!.array[index].y += addY
                 }
             }
             fillGraphColor()
@@ -142,10 +142,10 @@ class GridViewModel: ObservableObject {
         setGraphModelProperty(color: colorOfGraph, addX: addX, addY: addY)
 
         if Int.zero != addX {
-            self.graphModel!.x = self.graphModel!.x + addX
+            self.graphModel!.x += addX
         }
         if Int.zero != addY {
-            self.graphModel!.y = self.graphModel!.y + addY
+            self.graphModel!.y += addY
         }
     }
 
@@ -258,7 +258,7 @@ class GridViewModel: ObservableObject {
         var moveIndexArr: [Int] = []
 
         for index in 0..<self.gridModel.lineArray.count {
-            var lineModel = self.gridModel.lineArray[index]
+            let lineModel = self.gridModel.lineArray[index]
 
             let countOfCanMove = lineModel.lineArray.filter {
                 $0.canMove == 0

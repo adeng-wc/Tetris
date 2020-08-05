@@ -8,12 +8,11 @@ import SwiftUI
 
 struct PreLineModel: Identifiable {
 
-    var id: String
+    var id: UUID = UUID()
     var lineArray: [CubeModel] = []
     var y: Int
 
     init(_ y: Int, widthNum: Int) {
-        self.id = String.init(y) + "line"
         self.y = y
         for x in 0..<widthNum {
             lineArray.append(CubeModel(x, y, Color.white))
