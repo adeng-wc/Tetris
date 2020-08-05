@@ -28,16 +28,30 @@ struct GridModel {
         }
     }
 
-    func isWhite(_ x: Int, _ y: Int) -> Bool {
+    mutating func setCanMover(x: Int, y: Int, canMove: Int) {
         for lineIndex in 0..<lineArray.count {
             if (lineIndex == y) {
                 for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
                     if (cubeIndex == x) {
-                        return lineArray[lineIndex].lineArray[cubeIndex].color == Color.white
+                        lineArray[lineIndex].lineArray[cubeIndex].canMove = canMove
                     }
                 }
             }
         }
+    }
+
+    // 判断节点的 canMove 是否是 0
+    func isCanNotMove(_ x: Int, _ y: Int) -> Bool {
+        for lineIndex in 0..<lineArray.count {
+            if (lineIndex == y) {
+                for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
+                    if (cubeIndex == x) {
+                        return lineArray[lineIndex].lineArray[cubeIndex].canMove == 0
+                    }
+                }
+            }
+        }
+        print(" 非法的 x: \(x),y: \(x)  ")
         return false
     }
 }

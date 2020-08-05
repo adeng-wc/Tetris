@@ -75,9 +75,22 @@ class GridViewModel: ObservableObject {
 
         // 先判断，能否下移
         for index in self.graphModel!.array {
+            // 达到最底层
             if (index.y + 1) == gridModel.lineArray.count {
                 print("y + 1 == 最大y值：\(gridModel.lineArray.count)")
 
+                // 设置不能移动
+                setCanNotMove()
+                // 到底后，添加一个新的图形到网格中
+                preGridViewModel?.addToGrid()
+                return
+            }
+
+            // 下移所有节点，判断 canMove 是 0，
+            if gridModel.isCanNotMove(index.x, index.y + 1) {
+                print(" 下方节点状态是 不能移动状态 ")
+                // 设置不能移动
+                setCanNotMove()
                 // 到底后，添加一个新的图形到网格中
                 preGridViewModel?.addToGrid()
                 return
@@ -97,6 +110,13 @@ class GridViewModel: ObservableObject {
             self.graphModel!.array[index].color = color
         }
         fillColor()
+    }
+
+    // 设置不能移动
+    func setCanNotMove() {
+        for index in self.graphModel!.array {
+            gridModel.setCanMover(x: index.x, y: index.y, canMove: 0)
+        }
     }
 }
 
