@@ -14,6 +14,9 @@ class GridViewModel: ObservableObject {
     // 主网格中，可以移动的对象
     var graphModel: GraphModel?
 
+    // 定时器
+    var timer: Timer?
+
     init(widthNum: Int, heightNum: Int) {
         gridModel = GridModel(widthNum, heightNum)
     }
@@ -49,7 +52,39 @@ class GridViewModel: ObservableObject {
         default:
             print("默认 case")
         }
+
+        // 判断游戏是否结束
+        if isGameOver() {
+            timer?.invalidate()
+            print("Game Over")
+        }
+
         fillGraphColor()
+    }
+
+    private func isGameOver() -> Bool {
+        for index in self.graphModel!.array {
+            if gridModel.isCanNotMove(index.x, index.y) {
+                return true
+            }
+        }
+        return false
+    }
+
+    /**
+        重新开始
+    */
+    func restart() {
+        gridModel.restart()
+        preGridViewModel?.addToGrid()
+
+        timer = Timer.init(timeInterval: 1, repeats: true) { (kTimer) in
+            print("定时器启动了")
+            self.downMove()
+        }
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+        // 启动定时器
+        timer!.fire()
     }
 
     /**

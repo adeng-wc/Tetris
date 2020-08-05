@@ -16,6 +16,15 @@ struct GridModel {
         print("GridModel.init() 初始化完成")
     }
 
+    mutating func restart() {
+        for lineIndex in 0..<lineArray.count {
+            for cubeIndex in 0..<lineArray[lineIndex].lineArray.count {
+                lineArray[lineIndex].lineArray[cubeIndex].color = Color.white
+                lineArray[lineIndex].lineArray[cubeIndex].canMove = 1
+            }
+        }
+    }
+
     mutating func setColor(_ x: Int, _ y: Int, _ color: Color) {
         for lineIndex in 0..<lineArray.count {
             if (lineIndex == y) {
@@ -40,7 +49,9 @@ struct GridModel {
         }
     }
 
-    // 判断节点的 canMove 是否是 0
+    /**
+        判断节点的 canMove 是否是 0
+    */
     func isCanNotMove(_ x: Int, _ y: Int) -> Bool {
         for lineIndex in 0..<lineArray.count {
             if (lineIndex == y) {

@@ -29,7 +29,11 @@ struct MainView: View {
             PreGridView(self.preGridViewModel).padding()
 
             //变形按钮视图
-            Text("Hello, World!3")
+            HStack {
+                Button(action: {
+                    self.gridViewModel.restart()
+                }, label: { Text("重新开始") })
+            }
         }
     }
 }
