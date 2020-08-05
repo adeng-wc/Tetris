@@ -7,16 +7,14 @@ import SwiftUI
 
 class PreGridViewModel: ObservableObject {
 
-    var widthNum: Int
-    var heightNum: Int
     @ObservedObject var gridViewModel: GridViewModel
+
     @Published private var preGridModel: PreGridModel
+
     private var graphModel: GraphModel
 
     init(widthNum: Int, heightNum: Int, gridViewModel: GridViewModel) {
-        self.widthNum = widthNum
-        self.heightNum = heightNum
-        self.preGridModel = PreGridModel(widthNum: self.widthNum, heightNum: self.heightNum)
+        self.preGridModel = PreGridModel(widthNum: widthNum, heightNum: heightNum)
         self.gridViewModel = gridViewModel
 
         // 填充表格

@@ -37,5 +37,4 @@ struct GridView: View {
     private func body(_ cubeModel: CubeModel, _ size: CGSize) -> some View {
         CubeView(cubeModel, size)
     }
-
 }

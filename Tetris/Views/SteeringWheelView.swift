@@ -24,6 +24,7 @@ struct SteeringWheelView: View {
                 Button(action: {
                     self.gridViewModel.leftMove()
                 }, label: { Text("⬅️️") })
+                Text(" ")
                 Button(action: {
                     self.gridViewModel.rightMove()
                 }, label: { Text("➡️️") })
