@@ -186,8 +186,59 @@ class GridViewModel: ObservableObject {
     private func reachTheBottom() {
         // 设置不能移动
         setCanNotMove()
+        // 判断 一行的 gridModel.lineArray 是否都是  canMove: 0 状态，是就要清除
+        checkMainGridLineArrayCanMoveStatus()
         // 到底后，添加一个新的图形到网格中
         preGridViewModel?.addToGrid()
+    }
+
+    private func checkMainGridLineArrayCanMoveStatus() {
+
+        // 记录消除的行
+        var moveIndexArr: [Int] = []
+
+        for index in 0..<self.gridModel.lineArray.count {
+            var lineModel = self.gridModel.lineArray[index]
+
+            let countOfCanMove = lineModel.lineArray.filter {
+                $0.canMove == 0
+            }.count
+
+            if countOfCanMove == lineModel.lineArray.count {
+                // 表示当前行被占满，需要清除
+                print("当前行已经满了，y:\(index)")
+                clearGridByIndex(index)
+                moveIndexArr.append(index)
+            }
+        }
+
+        for index in moveIndexArr {
+            // 所有 canMove == 0 的都下移
+            downOfCanNotMove(index)
+        }
+    }
+
+    private func downOfCanNotMove(_ index: Int) {
+        // 倒叙遍历
+        for lineIndex in (0...(self.gridModel.lineArray.count - 1)).reversed() {
+            // 只移动消除行以上的
+            if lineIndex < index {
+                // canMove == 0 的都下移
+                for cubeIndex in 0..<self.gridModel.lineArray[lineIndex].lineArray.count {
+                    self.gridModel.lineArray[lineIndex + 1].lineArray[cubeIndex].canMove = self.gridModel.lineArray[lineIndex].lineArray[cubeIndex].canMove
+                    self.gridModel.lineArray[lineIndex + 1].lineArray[cubeIndex].color = self.gridModel.lineArray[lineIndex].lineArray[cubeIndex].color
+                    self.gridModel.lineArray[lineIndex].lineArray[cubeIndex].color = Color.white
+                    self.gridModel.lineArray[lineIndex].lineArray[cubeIndex].canMove = 1
+                }
+            }
+        }
+    }
+
+    private func clearGridByIndex(_ index: Int) {
+        for indexOfX in 0..<self.gridModel.lineArray[index].lineArray.count {
+            self.gridModel.lineArray[index].lineArray[indexOfX].color = Color.white
+            self.gridModel.lineArray[index].lineArray[indexOfX].canMove = 1
+        }
     }
 
     /**
