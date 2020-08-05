@@ -60,14 +60,121 @@ class GridViewModel: ObservableObject {
 
     func change() {
         print("向上按钮")
+        let color = self.graphModel!.array[0].color
+
+        // 先变白色
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].color = Color.white
+        }
+        fillColor()
+        // 变形
+        self.graphModel!.changeClockwise()
+
+        // 先判断，能否下移
+        for index in self.graphModel!.array {
+            if index.x < 0 ||
+                       index.x >= gridModel.lineArray[0].lineArray.count ||
+                       index.y >= gridModel.lineArray.count {
+                print("x, y 超边界")
+                print("节点数组： \(self.graphModel!.array)")
+                // 回退，重新赋值颜色
+                self.graphModel!.changeCounterclockwise()
+                print("节点数组： \(self.graphModel!.array)")
+                for index in 0..<self.graphModel!.array.count {
+                    self.graphModel!.array[index].color = color
+                }
+                fillColor()
+                return
+            }
+
+            // 下移所有节点，判断 canMove 是 0，
+            if gridModel.isCanNotMove(index.x, index.y) {
+                print("变形后方块会被占用")
+                // 回退，重新赋值颜色
+                print("节点数组： \(self.graphModel!.array)")
+                self.graphModel!.changeCounterclockwise()
+                print("节点数组： \(self.graphModel!.array)")
+                for index in 0..<self.graphModel!.array.count {
+                    self.graphModel!.array[index].color = Color.white
+                }
+                fillColor()
+                return
+            }
+        }
+
+        // 重新赋值颜色
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].color = color
+        }
+        fillColor()
     }
 
     func leftMove() {
         print("向左按钮")
+        // 先判断，能否下移
+        for index in self.graphModel!.array {
+            // 达到最底层
+            if (index.x - 1) < 0 {
+                print("index.x - 1 < 0")
+                return
+            }
+
+            // 下移所有节点，判断 canMove 是 0，
+            if gridModel.isCanNotMove(index.x - 1, index.y) {
+                print(" 左边 节点状态是 不能移动状态 ")
+                return
+            }
+        }
+
+        // 将自己的位置变白色
+        let color = self.graphModel!.array[0].color
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].color = Color.white
+        }
+        fillColor()
+
+        // 下移一格，重新渲染
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].x = self.graphModel!.array[index].x - 1
+            self.graphModel!.array[index].color = color
+        }
+        fillColor()
+
+        self.graphModel!.x = self.graphModel!.x - 1
     }
 
     func rightMove() {
         print("向右按钮")
+        // 先判断，能否下移
+        for index in self.graphModel!.array {
+            // 达到最底层
+            if (index.x + 1) >= gridModel.lineArray[0].lineArray.count {
+                print("index.x + 1 >= \(gridModel.lineArray[0].lineArray.count)")
+                return
+            }
+
+            // 下移所有节点，判断 canMove 是 0，
+            if gridModel.isCanNotMove(index.x + 1, index.y) {
+                print(" 左边 节点状态是 不能移动状态 ")
+                return
+            }
+        }
+
+        // 将自己的位置变白色
+        let color = self.graphModel!.array[0].color
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].color = Color.white
+        }
+        fillColor()
+
+        // 下移一格，重新渲染
+        for index in 0..<self.graphModel!.array.count {
+            self.graphModel!.array[index].x = self.graphModel!.array[index].x + 1
+            self.graphModel!.array[index].color = color
+        }
+        fillColor()
+
+        self.graphModel!.x = self.graphModel!.x + 1
     }
 
     func downMove() {
@@ -110,6 +217,8 @@ class GridViewModel: ObservableObject {
             self.graphModel!.array[index].color = color
         }
         fillColor()
+
+        self.graphModel!.y = self.graphModel!.y + 1
     }
 
     // 设置不能移动

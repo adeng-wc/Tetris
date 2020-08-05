@@ -8,9 +8,14 @@ import SwiftUI
 
 protocol GraphModel {
     var array: [CubeModel] { get set }
+    var x: Int { get set }
+    var y: Int { get set }
     var type: Int { get }
     var status: Int { get }
-    mutating func change()
+    // 顺时针变化
+    mutating func changeClockwise()
+    // 逆时针变化
+    mutating func changeCounterclockwise()
 }
 
 extension GraphModel {
@@ -55,7 +60,15 @@ struct Type1: GraphModel {
         }
     }
 
-    mutating func change() {
+    mutating func changeClockwise() {
+        if status == 1 {
+            status2()
+        } else {
+            status1()
+        }
+    }
+
+    mutating func changeCounterclockwise() {
         if status == 1 {
             status2()
         } else {
@@ -102,7 +115,11 @@ struct Type2: GraphModel {
         array.append(CubeModel(x + 1, y + 1, Color.green))
     }
 
-    func change() {
+    mutating func changeClockwise() {
+
+    }
+
+    mutating func changeCounterclockwise() {
 
     }
 }
@@ -136,7 +153,7 @@ struct Type3: GraphModel {
         }
     }
 
-    mutating func change() {
+    mutating func changeClockwise() {
         if status == 1 {
             y = y - 1
             status2()
@@ -149,6 +166,22 @@ struct Type3: GraphModel {
         } else {
             x = x - 1
             status1()
+        }
+    }
+
+    mutating func changeCounterclockwise() {
+        if status == 1 {
+            x = x + 1
+            status4()
+        } else if status == 2 {
+            y = y + 1
+            status1()
+        } else if status == 3 {
+            x = x - 1
+            status2()
+        } else {
+            y = y - 1
+            status3()
         }
     }
 
@@ -222,7 +255,7 @@ struct Type4: GraphModel {
         }
     }
 
-    mutating func change() {
+    mutating func changeClockwise() {
         if status == 1 {
             x = x - 1
             status2()
@@ -235,6 +268,22 @@ struct Type4: GraphModel {
         } else {
             y = y + 1
             status1()
+        }
+    }
+
+    mutating func changeCounterclockwise() {
+        if status == 1 {
+            y = y - 1
+            status4()
+        } else if status == 2 {
+            x = x + 1
+            status1()
+        } else if status == 3 {
+            y = y + 1
+            status2()
+        } else {
+            x = x - 1
+            status3()
         }
     }
 
@@ -304,7 +353,15 @@ struct Type5: GraphModel {
         }
     }
 
-    mutating func change() {
+    mutating func changeClockwise() {
+        if status == 1 {
+            status2()
+        } else {
+            status1()
+        }
+    }
+
+    mutating func changeCounterclockwise() {
         if status == 1 {
             status2()
         } else {
@@ -357,7 +414,15 @@ struct Type6: GraphModel {
         }
     }
 
-    mutating func change() {
+    mutating func changeClockwise() {
+        if status == 1 {
+            status2()
+        } else {
+            status1()
+        }
+    }
+
+    mutating func changeCounterclockwise() {
         if status == 1 {
             status2()
         } else {
@@ -414,7 +479,7 @@ struct Type7: GraphModel {
         }
     }
 
-    mutating func change() {
+    mutating func changeClockwise() {
         if status == 1 {
             status2()
         } else if status == 2 {
@@ -423,6 +488,18 @@ struct Type7: GraphModel {
             status4()
         } else {
             status1()
+        }
+    }
+
+    mutating func changeCounterclockwise() {
+        if status == 1 {
+            status4()
+        } else if status == 2 {
+            status1()
+        } else if status == 3 {
+            status2()
+        } else {
+            status3()
         }
     }
 

@@ -72,7 +72,7 @@ class PreGridViewModel: ObservableObject {
 
     // 图形变形
     func change() {
-        self.graphModel.change()
+        self.graphModel.changeClockwise()
         self.fillColor()
     }
 }
