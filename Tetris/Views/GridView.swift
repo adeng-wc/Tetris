@@ -8,9 +8,11 @@ import SwiftUI
 struct GridView: View {
 
     @ObservedObject var gridViewModel: GridViewModel
+    @ObservedObject var preGridViewModel: PreGridViewModel
 
-    init(_ gridViewModel: GridViewModel) {
+    init(_ gridViewModel: GridViewModel, _ preGridViewModel: PreGridViewModel) {
         self.gridViewModel = gridViewModel
+        self.preGridViewModel = preGridViewModel
     }
 
     var body: some View {

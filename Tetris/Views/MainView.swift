@@ -23,7 +23,7 @@ struct MainView: View {
             SteeringWheelView(self.gridViewModel)
             Divider()
             // 主网格视图
-            GridView(self.gridViewModel).padding()
+            GridView(self.gridViewModel, self.preGridViewModel).padding()
             // 预览的网格
             PreGridView(self.preGridViewModel).padding()
             Divider()
