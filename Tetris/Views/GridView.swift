@@ -23,6 +23,15 @@ struct GridView: View {
                     }
                 }
             })
+        }.alert(isPresented: self.gridViewModel.getGameOverStatus()) {
+            Alert(
+                    title: Text("Game Over"),
+                    message: Text("开始新游戏？"),
+                    primaryButton: .default(Text("OK")) {
+                        self.gridViewModel.restart()
+                    },
+                    secondaryButton: .cancel()
+            )
         }
     }
 

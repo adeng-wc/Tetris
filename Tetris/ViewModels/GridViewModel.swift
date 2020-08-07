@@ -8,6 +8,7 @@ import SwiftUI
 class GridViewModel: ObservableObject {
 
     @Published private var gridModel: GridModel
+    @Published private var gameOverStatus: Bool = false
 
     var preGridViewModel: PreGridViewModel?
 
@@ -28,6 +29,10 @@ class GridViewModel: ObservableObject {
 
     func getAllLine() -> [LineModel] {
         gridModel.lineArray
+    }
+
+    func getGameOverStatus() -> Binding<Bool> {
+        Binding.constant(gameOverStatus)
     }
 
     // 将 预览的 图形，添加到主网格中
@@ -58,6 +63,8 @@ class GridViewModel: ObservableObject {
         if isGameOver() {
             timer?.invalidate()
             print("Game Over")
+            // TODO Gave Over
+            gameOverStatus = true
         }
 
         fillGraphColor()
@@ -100,6 +107,7 @@ class GridViewModel: ObservableObject {
         重新开始
     */
     func restart() {
+        gameOverStatus = false
         gridModel.restart()
         preGridViewModel?.addToGrid()
 
