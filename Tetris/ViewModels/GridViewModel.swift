@@ -9,6 +9,8 @@ class GridViewModel: ObservableObject {
 
     @Published private var gridModel: GridModel
     @Published private var gameOverStatus: Bool = false
+    @Published private var clearLineNum: Int = 0
+    @Published private var startTime: Date = Date.init()
 
     var preGridViewModel: PreGridViewModel?
 
@@ -61,13 +63,23 @@ class GridViewModel: ObservableObject {
 
         // 判断游戏是否结束
         if isGameOver() {
-            timer?.invalidate()
             print("Game Over")
-            // TODO Gave Over
-            gameOverStatus = true
+            clearGameDataAfterGameOver()
         }
 
         fillGraphColor()
+    }
+
+    // 获取本次游戏持续时间
+    func getGameTime() -> Int {
+        var end = Date.init()
+        var duration = DateInterval.init(start: startTime, end: end).duration
+        return Int.init(duration)
+    }
+
+    // 获取消除的行数
+    func getClearLineNum() -> Int {
+        self.clearLineNum
     }
 
     func speedDown() {
@@ -95,6 +107,11 @@ class GridViewModel: ObservableObject {
     }
 
     private func isGameOver() -> Bool {
+
+        if gameOverStatus {
+            return true
+        }
+
         for index in self.graphModel!.array {
             if gridModel.isCanNotMove(index.x, index.y) {
                 return true
@@ -103,12 +120,27 @@ class GridViewModel: ObservableObject {
         return false
     }
 
+    private func clearGameDataAfterGameOver() {
+        timer?.invalidate()
+        gameOverStatus = true
+//        startTime = Date.init()
+    }
+
+    // 初始化数据
+    private func initGameData() {
+        gameOverStatus = false
+        gridModel.restart()
+        self.clearLineNum = 0
+        self.startTime = Date.init()
+    }
+
     /**
         重新开始
     */
     func restart() {
-        gameOverStatus = false
-        gridModel.restart()
+        // 初始化数据
+        initGameData()
+
         preGridViewModel?.addToGrid()
 
         timer = Timer.init(timeInterval: self.speed, repeats: true) { (kTimer) in
@@ -283,6 +315,7 @@ class GridViewModel: ObservableObject {
         for index in moveIndexArr {
             // 所有 canMove == 0 的都下移
             downOfCanNotMove(index)
+            clearLineNum += 1
         }
     }
 

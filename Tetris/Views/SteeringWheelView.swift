@@ -18,21 +18,21 @@ struct SteeringWheelView: View {
             HStack {
                 Button(action: {
                     self.gridViewModel.change()
-                }, label: { Text("⬆️") })
+                }, label: { Text("⬆️").font(Font.system(.largeTitle)) })
             }
             HStack {
                 Button(action: {
                     self.gridViewModel.leftMove()
-                }, label: { Text("⬅️️") })
-                Text(" ")
+                }, label: { Text("⬅️️").font(Font.system(.largeTitle)) })
+                Text("        ")
                 Button(action: {
                     self.gridViewModel.rightMove()
-                }, label: { Text("➡️️") })
+                }, label: { Text("➡️️").font(Font.system(.largeTitle)) })
             }
             HStack {
                 Button(action: {
                     self.gridViewModel.downMove()
-                }, label: { Text("️⬇️") })
+                }, label: { Text("️⬇️").font(Font.system(.largeTitle)) })
             }
         }
     }

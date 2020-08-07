@@ -26,20 +26,20 @@ struct PreGridView: View {
                 }
             })
 
-            // 测试按钮
-            Button(action: {
-                self.preGridViewModel.randomGraph()
-            }, label: { Text("随机生成方块") })
-
-            // 测试变形
-            Button(action: {
-                self.preGridViewModel.change()
-            }, label: { Text("方块变形") })
-
-            // 预览形状添加到主网格
-            Button(action: {
-                self.preGridViewModel.addToGrid()
-            }, label: { Text("添加到主网格中") })
+//            // 测试按钮
+//            Button(action: {
+//                self.preGridViewModel.randomGraph()
+//            }, label: { Text("随机生成方块") })
+//
+//            // 测试变形
+//            Button(action: {
+//                self.preGridViewModel.change()
+//            }, label: { Text("方块变形") })
+//
+//            // 预览形状添加到主网格
+//            Button(action: {
+//                self.preGridViewModel.addToGrid()
+//            }, label: { Text("添加到主网格中") })
         }
     }
 
