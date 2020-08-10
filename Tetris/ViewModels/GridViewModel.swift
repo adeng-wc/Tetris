@@ -72,8 +72,8 @@ class GridViewModel: ObservableObject {
 
     // 获取本次游戏持续时间
     func getGameTime() -> Int {
-        var end = Date.init()
-        var duration = DateInterval.init(start: startTime, end: end).duration
+        let end = Date.init()
+        let duration = DateInterval.init(start: startTime, end: end).duration
         return Int.init(duration)
     }
 

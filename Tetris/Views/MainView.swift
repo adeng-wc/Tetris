@@ -11,7 +11,7 @@ struct MainView: View {
     @ObservedObject var preGridViewModel: PreGridViewModel
 
     init() {
-        var gridViewModel = GridViewModel(widthNum: 10, heightNum: 20)
+        let gridViewModel = GridViewModel(widthNum: 10, heightNum: 20)
         self.gridViewModel = gridViewModel
         self.preGridViewModel = PreGridViewModel(widthNum: 4, heightNum: 4, gridViewModel: gridViewModel)
         self.gridViewModel.setPreGridViewModel(self.preGridViewModel)
