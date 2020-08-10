@@ -10,6 +10,7 @@
 		57FAD03DB30326EB8D5D1431 /* SteeringWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD50EAC385C410143CF09 /* SteeringWheelView.swift */; };
 		57FAD0B7C9333010288267AD /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD50A8FA8744E684FA3F0 /* GridView.swift */; };
 		57FAD1E3805F3126AC565898 /* CubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD7F64ECD73564DF5C294 /* CubeModel.swift */; };
+		57FAD37309DA19AE0538AE0B /* GameRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD9215621C459C918ACD0 /* GameRecordModel.swift */; };
 		57FAD3A4EAEC8CF698AC545C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57FAD3D565387538649D4A77 /* Preview Assets.xcassets */; };
 		57FAD418BD295029137FC146 /* PreGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FADE1BBAB899DC99E797A6 /* PreGridView.swift */; };
 		57FAD5363A83C91A18A1C21A /* PreGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD207499AFA862E1964ED /* PreGridModel.swift */; };
@@ -65,6 +66,7 @@
 		57FAD649C83D3C06637C3D77 /* TetrisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TetrisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FAD7F64ECD73564DF5C294 /* CubeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeModel.swift; sourceTree = "<group>"; };
 		57FAD89CF5B321A42656ED3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		57FAD9215621C459C918ACD0 /* GameRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecordModel.swift; sourceTree = "<group>"; };
 		57FAD970676BDCC67DB27FCE /* PreGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGridViewModel.swift; sourceTree = "<group>"; };
 		57FAD99D920D42536B658EDE /* CubeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeView.swift; sourceTree = "<group>"; };
 		57FADAA22461ADBAAD07F78A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				57FAD207499AFA862E1964ED /* PreGridModel.swift */,
 				57FAD45974E69A27581DB579 /* PreLineModel.swift */,
 				57FAD5A9E971E2023E5C9BB4 /* GraphModel.swift */,
+				57FAD9215621C459C918ACD0 /* GameRecordModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				57FAD5363A83C91A18A1C21A /* PreGridModel.swift in Sources */,
 				57FADAA8955D2445EAE65996 /* PreLineModel.swift in Sources */,
 				57FADE339E2384B3AB6B97CC /* GraphModel.swift in Sources */,
+				57FAD37309DA19AE0538AE0B /* GameRecordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

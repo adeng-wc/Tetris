@@ -30,6 +30,11 @@ struct MainView: View {
             //变形按钮视图
             VStack {
                 VStack {
+                    VStack(alignment: .leading) {
+                        Text("历史最佳-消除行数：\(self.gridViewModel.getPeakClearLineNum()) 行")
+                        Text("历史最佳-持续时间：\(self.gridViewModel.getPeakGameTime()) 秒")
+                    }
+                    Divider()
                     VStack {
                         Button(action: {
                             self.gridViewModel.restart()

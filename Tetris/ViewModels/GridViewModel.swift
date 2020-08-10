@@ -11,6 +11,7 @@ class GridViewModel: ObservableObject {
     @Published private var gameOverStatus: Bool = false
     @Published private var clearLineNum: Int = 0
     @Published private var startTime: Date = Date.init()
+    @Published private var peakGameRecord: GameRecordModel
 
     var preGridViewModel: PreGridViewModel?
 
@@ -21,8 +22,13 @@ class GridViewModel: ObservableObject {
     var timer: Timer?
     var speed = 1.0
 
+    let defaultsKey = "peakGameRecord"
+
     init(widthNum: Int, heightNum: Int) {
-        gridModel = GridModel(widthNum, heightNum)
+        self.gridModel = GridModel(widthNum, heightNum)
+        // 初始化的时候读取最佳游戏时间
+        self.peakGameRecord = GameRecordModel(json: UserDefaults.standard.data(forKey: defaultsKey)) ??
+                GameRecordModel(clearLineNum: 0, startTime: Date.init(), endTime: Date.init())
     }
 
     func setPreGridViewModel(_ preGridViewModel: PreGridViewModel) {
@@ -65,9 +71,25 @@ class GridViewModel: ObservableObject {
         if isGameOver() {
             print("Game Over")
             clearGameDataAfterGameOver()
+            peakInfo()
         }
 
         fillGraphColor()
+    }
+
+
+    func getPeakGameTime() -> Int {
+        let nowTime = Date.init()
+        let start = self.peakGameRecord.startTime ?? nowTime
+        let end = self.peakGameRecord.endTime ?? nowTime
+        if start == end {
+            return 0
+        }
+        return Int.init(DateInterval.init(start: start, end: end).duration)
+    }
+
+    func getPeakClearLineNum() -> Int {
+        self.peakGameRecord.clearLineNum ?? 0
     }
 
     // 获取本次游戏持续时间
@@ -120,10 +142,17 @@ class GridViewModel: ObservableObject {
         return false
     }
 
+    private func peakInfo() {
+
+        if self.clearLineNum > peakGameRecord.clearLineNum ?? 0 {
+            let newObj: GameRecordModel = GameRecordModel(clearLineNum: self.clearLineNum, startTime: self.startTime, endTime: Date.init())
+            UserDefaults.standard.set(newObj.getJson(), forKey: defaultsKey)
+        }
+    }
+
     private func clearGameDataAfterGameOver() {
         timer?.invalidate()
         gameOverStatus = true
-//        startTime = Date.init()
     }
 
     // 初始化数据
@@ -132,6 +161,9 @@ class GridViewModel: ObservableObject {
         gridModel.restart()
         self.clearLineNum = 0
         self.startTime = Date.init()
+
+        self.peakGameRecord = GameRecordModel(json: UserDefaults.standard.data(forKey: defaultsKey)) ??
+                GameRecordModel()
     }
 
     /**
